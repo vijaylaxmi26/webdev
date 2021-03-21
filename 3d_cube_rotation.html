@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>3d rotation</title>
+	<style type="text/css">
+		.wrapper{
+			position: absolute;
+			top: 50%;
+			left:50%;
+			perspective:1500px;
+		}
+
+		.box-area{
+			position: relative;
+			transform-style: preserve-3d;
+			animation-name: rotate;
+			animation-duration: 30s;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+
+		}
+
+		.box{
+			position: absolute;
+			width: 200px;
+			height: 200px;
+			border:2px solid #262626;
+		}
+
+		.box-front{
+			transform: translateX(-100px) translateY(-100px) translateZ(100px);
+			background-color: #f5ccff;
+		}
+		.box-back{
+			transform: translateX(-100px) translateY(-100px) translateZ(-100px);
+			background-color: #f5ccff;
+		}
+		.box-right{
+			transform:  translateY(-100px)  rotateY(90deg);
+			background-color: #f5ccff;
+		}
+		.box-left{
+			transform: translateY(-100px) translateX(-200px) rotateY(90deg);
+			background-color: #f5ccff;
+		}
+        .box-bottom{
+			transform:  translateX(-100px)  rotateX(90deg);
+			background-color: #f5ccff;
+		}
+		.box-top{
+			transform:  translateX(-100px) translateY(-200px) rotateX(90deg);
+			background-color: #f5ccff;
+		}
+
+
+
+		@keyframes rotate{
+			0%{
+				transform: rotate3d(0,0,0,0);
+			}
+			100%{
+				transform: rotate3d(0,1,0,360deg);
+			}
+		}
+	</style>
+</head>
+<body>
+     <div class="wrapper">
+     	<div class="box-area">
+     		<div class="box box-front"></div>
+     		<div class="box box-right"></div>
+     		<div class="box box-back"></div>
+     		<div class="box box-left"></div>
+     		<div class="box box-top"></div>
+     		<div class="box box-bottom"></div>
+     	</div>
+     </div>
+</body>
+</html>
