@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>clock</title>
+	<style type="text/css">
+		body{
+			margin:0;
+			padding: 0;
+			background-color: #242733;
+			height: 100vh;
+			width: 100%;
+	        display: flex;
+	        justify-content: center;
+	        align-items: center;
+		}
+		.clock{
+			background-color:  #242733;
+			border-radius: 100%;
+			border:5px solid  #242733;
+			box-shadow: -10px -10px 20px 0 rgba(255,255,255,0.05),
+			           10px 10px 20px 0 rgba(0,0,0,0.2);
+			background-image: url(flower.png);
+		}
+		.clock .wrap{
+			width: 320px;
+			height: 320px;
+			overflow: hidden;
+			position: relative;
+			border-radius: 100%;
+			box-shadow: -5px -5px 20px 0 rgba(255,255,255,0.05) inset,
+			           5px 5px 20px 0 rgba(0,0,0,0.2) inset;
+
+		}
+		.hour{
+			background-color: #2ba5ee;
+		}
+		.minute,
+		.hour{
+			position: absolute;
+			height: 100px;
+			width: 6px;
+			margin: auto;
+			top: -29%;
+			left:0;
+			bottom: 0;
+			right: 0;
+			transform: rotate(0deg);
+			transform-origin: bottom center;
+			box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+			z-index: 1;
+		}
+		.minute{
+			position: absolute;
+			height: 130px;
+			width: 4px;
+			top: -38%;
+			left:0;
+			transform: rotate(90deg);
+			box-shadow: 0 0 10px 0 rgba(0,0,0,0.4);
+			background-color: #fff;
+
+		}
+		.second{
+			position: absolute;
+			height: 120px;
+			width: 2px;
+			margin: auto;
+			top: -38%;
+			left:0;
+			bottom: 0;
+			right: 0;
+			background-color: #40434d;
+			transform: rotate(180deg);
+			transform-origin: bottom center;
+			z-index: 1;
+		}
+		.dot{
+			position: absolute;
+			height: 12px;
+			width: 12px;
+			margin: auto;
+			top: 0;
+			left:0;
+			bottom: 0;
+			right: 0;
+			border-radius: 100px;
+			background-color: #fff;
+			border:2px solid #fff;
+			z-index: 1;
+		}
+		 .tel1{
+			position: absolute;
+			height: 12px;
+			width: 12px;
+			margin:auto;
+			top: -38%;
+			left:-0.5%;
+			bottom: 0;
+			right: 0;
+			color: #fff;
+			z-index: 2;
+		}
+		 .tel3{
+			position: absolute;
+			height: 12px;
+			width: 12px;
+			margin:auto;
+			top: 38%;
+			left:-0.5%;
+			bottom: 0;
+			right: 0;
+			color: #fff;
+			z-index: 2;
+		}
+		 .tel2{
+			position: absolute;
+			height: 12px;
+			width: 12px;
+			margin:auto;
+			top: 0;
+			left:18%;
+			bottom: 0;
+			right: 0;
+			color: #fff;
+			z-index: 2;
+		}
+		 .tel4{
+			position: absolute;
+			height: 12px;
+			width: 12px;
+			margin:auto;
+			top: 0;
+			left:-18%;
+			bottom: 0;
+			right: 0;
+			color: #fff;
+			z-index: 2;
+		}
+
+	</style>
+</head>
+<body>
+<div class="clock">
+	<div class="wrap">
+		<span class="hour"></span>
+		<span class="minute"></span>
+		<span class="second"></span>
+		<span class="dot"></span>
+	</div>
+	<p class="tel1">12</p>
+	<p class="tel2">3</p>
+	<p class="tel3">6</p>
+	<p class="tel4">9</p>
+	 
+</div>
+
+<script type="text/javascript">
+	var inc =1000;
+	clock();
+
+	function clock() {
+		 const date = new Date();
+
+		 const hours = ((date.getHours() +11) % 12 +1);
+		 const minutes = date.getMinutes();
+		 const seconds = date.getSeconds();
+
+		 const hour = hours* 30;
+		 const minute = minutes* 6;
+		 const second = seconds* 6;
+
+		 document.querySelector('.hour').style.transform = `rotate(${hour}deg)`
+		 document.querySelector('.minute').style.transform = `rotate(${minute}deg)`
+		 document.querySelector('.second').style.transform = `rotate(${second}deg)`
+
+	}
+
+	setInterval(clock , inc);
+</script>
+</body>
+</html>
