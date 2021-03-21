@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>green_screen</title>
+	<style type="text/css">
+		#fg,#bg
+{
+  width:400px;
+  height:auto;
+  border:1px solid black
+}
+	</style>
+</head>
+<body>
+<canvas id="fg">
+  </canvas>
+<canvas id="bg">
+  </canvas>
+<script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js">
+</script>
+<p>
+  Forgroundimage:
+  <input type="file" multiple="false"
+         accept="image/*" id="fillput1"
+         onclick="forgroundimage()">
+  </p>
+<p>
+  backgroundimage:
+  <input type="file" multiple="false"
+         accept="image/*" id="fillput2"
+         onclick="backgroundimage()">
+  </p>
+<p>
+  <input type="button" onclick="cambain()"
+         value="cambain">
+</p>
+         
+ <script type="text/javascript">
+ 	var fgImage=null,
+    bgImage=null;
+
+function forgroundimage()
+{
+  var can = document.getElementById("fg");
+  var imageinput=document.getElementById("fillput1");
+  fgImage = new SimpleImage("imageinput");
+  fgImage.drawTo(can);
+}
+function backgroundimage()
+{
+  var can = document.getElementById("fg");
+  var imageinput=document.getElementById("fillput1");
+  bgImage = new SimpleImage("imageinput");
+  bgImage.drawTo(can);
+}
+function cambain()
+{ 
+var output = new SimpleImage(fgImage.getWidth(),fgImage.getHeight());
+for(var pixel of fgImage.values())
+{ 
+      var x = pixel.getX();
+      var y =pixel.getY();
+   if(pixel.getGreen()>pixel.getBlue()+pixel.getRed())
+   {
+      var bgpixel= bgImage.getPixel(x,y);
+      output.setPixel(x,y,bgpixel);
+   }
+   else{
+   output.setPixel(x,y,pixel);
+   }
+    
+}
+output}
+ </script>        
+</body>
+</html>
