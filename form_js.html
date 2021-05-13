@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>javascript validdation</title>
+	<style type="text/css">
+		body{
+			background-color: aqua;
+		}
+		h1{
+			color: white;
+			text-align: center;
+			font-size: 40px;
+		}
+		.registration-form{
+          border:1px solid black;
+          width: 25%;
+          margin-left: 37%;
+          padding:10px 0; 
+		 }
+
+	</style>
+</head>
+<body>
+<h1>Javascript validation</h1>
+<div class="registration-form">
+<form action="Simpleexample.html" name="registrationForm" onsubmit="return validation()" method="post" align="center">
+	  <label>Name: </label>     
+	  <input type="text" name="name"><br><br>            
+	   <label>Email: </label>    
+       <input  type="email" name="email"><br><br> 
+       <label>Age: </label>    
+       <input  type="number" name="number"><br><br> 
+       <label>Gender: </label>     
+	  <input type="radio" name="gender" value="m">male<input type="radio" name="gender" value="f">female<br><br>
+	  <label>Mobile no: </label>
+	  <input placeholder="enter your 10 digit number" type="text" name="idnumber" pattern="[0-9]{10}"/><br><br>
+
+       <input type="checkbox" name="term">Please accept the Terms and Condition <br> <br>
+	   <input type="submit" value="submit">     
+	   <input type="reset" value="Reset"> 
+</form>
+</div>
+<script type="text/javascript">
+	function validation() {
+		var nameInput = document.forms["registrationForm"]["name"].value;
+		var emailInput = document.forms["registrationForm"]["email"].value;
+		var genderInput = document.forms["registrationForm"]["gender"].value;
+		var ageInput = document.forms["registrationForm"]["number"].value;
+		var mobileInput = document.forms["registrationForm"]["idnumber"].value;
+		if(nameInput==""){
+			alert("Please enter the name")
+			return false;
+		}
+		var nameRegx = /[A-Za-z]$/;
+		 if(nameRegx.test(nameInput)==false){
+		 	alert('Name should contain only characters.');
+		 	return false;
+		 }
+
+		 if(nameInput.length>10){
+		 	alert('Name should contain mximum 10 characters');
+		 	return false;
+		 }
+		  if(emailInput==""){
+		  	alert('Please enter the email')
+		  	return false;
+		  }
+
+		  var emailRegx =/([A-Za-z1-9_\-\.])+\@([A-Za-z1-9_\-\.])+\.([A-Za-z]{2,8})$/
+
+		  if(emailRegx.test(emailInput)==false){
+		  	alert("Please write the correct email format.")
+		  	return false;
+		  }
+
+          if(ageInput==""){
+		 	alert('please enter the age')
+		 	return false;
+		 }
+
+		 var ageRegx=/[1-9]$/
+		 if(ageRegx.test(ageInput)==false){
+		 	alert('Name should cantain number')
+		 	return false;
+		 }
+
+		 if(ageInput>40){
+		 	if(ageInput<18){
+		 	alert("can't apply age should be a under 40 and above 18.")
+		 	return false;
+		 }
+		 }
+
+		 if(genderInput==""){
+		 	alert('enter the gender')
+		 	return false;
+		 }
+
+		 if(mobileInput==""){
+		 	alert('please enter the Mobile number');
+		 	return false;
+		 }
+		
+
+	}
+</script>
+</body>
+</html>
